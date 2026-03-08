@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Brand Tweet Generator</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="page">
+
+<div class="card">
+
+<h1>AI Brand Tweet Generator</h1>
+
+<p class="subtitle">
+Generate 10 on-brand tweets using AI-style brand voice analysis
+</p>
+
+<form method="POST" class="form">
+
+<div class="form-group">
+<label for="brand">Brand Name</label>
+<input type="text" id="brand" name="brand" placeholder="Example: Nike" required>
+</div>
+
+<div class="form-group">
+<label for="industry">Industry / Category</label>
+<input type="text" id="industry" name="industry" placeholder="Example: Sportswear" required>
+</div>
+
+<div class="form-group">
+<label for="objective">Campaign Objective</label>
+<select id="objective" name="objective">
+<option value="Engagement">Engagement</option>
+<option value="Promotion">Promotion</option>
+<option value="Brand Awareness">Brand Awareness</option>
+<option value="Product Launch">Product Launch</option>
+</select>
+</div>
+
+<div class="form-group">
+<label for="product">Product Description</label>
+<textarea id="product" name="product" rows="3" placeholder="Example: High-performance running shoes"></textarea>
+</div>
+
+<button type="submit">Generate Tweets</button>
+
+</form>
+
+{% if analysis %}
+
+<div class="analysis">
+
+<h3>Brand Voice Analysis</h3>
+
+<ul>
+<li><b>Tone:</b> {{ analysis.tone }}</li>
+<li><b>Target Audience:</b> {{ analysis.audience }}</li>
+<li><b>Content Theme:</b> {{ analysis.theme }}</li>
+<li><b>Objective:</b> {{ analysis.objective }}</li>
+</ul>
+
+</div>
+
+{% endif %}
+
+
+{% if tweets %}
+
+<div class="tweets">
+
+<h3>Generated Tweets</h3>
+
+{% for t in tweets %}
+<div class="tweet">
+{{ t }}
+</div>
+{% endfor %}
+
+</div>
+
+{% endif %}
+
+</div>
+
+</div>
+
+</body>
+
+</html>

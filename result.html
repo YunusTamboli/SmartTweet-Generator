@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generated Tweets</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Generated Tweets for {{ brand }}</h1>
+
+<p class="subtitle">AI-generated tweets based on brand voice analysis</p>
+
+
+<div class="analysis">
+
+<h3>Brand Voice Analysis</h3>
+
+<ul>
+<li><b>Tone:</b> {{ analysis.tone }}</li>
+<li><b>Target Audience:</b> {{ analysis.audience }}</li>
+<li><b>Content Theme:</b> {{ analysis.theme }}</li>
+<li><b>Campaign Objective:</b> {{ analysis.objective }}</li>
+</ul>
+
+</div>
+
+
+<div class="tweets">
+
+<h3>Generated Tweets</h3>
+
+{% for tweet in tweets %}
+
+<div class="tweet">
+{{ tweet }}
+</div>
+
+{% endfor %}
+
+</div>
+
+
+<a href="/" class="back">Generate Tweets for Another Brand</a>
+
+</div>
+
+</body>
+</html>
